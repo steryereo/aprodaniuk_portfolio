@@ -33,7 +33,9 @@ $orange: #E3B40C;
 $text-color: #515151;
 $white: #FFF;
 $bg-main: #F5F5F5;
+$grey: #D8D8D8;
 $gold: #DFB83D;
+$nav-height: 100px;
 
 $med-breakpoint: 780px;
 $small-breakpoint: 480px;
@@ -53,9 +55,15 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: $text-color;
+  transition: color .2s ease-in-out 0s;
+}
+
 header {
   background-color: $white;
-  padding: 1rem;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -71,11 +79,15 @@ ul {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: $bg-main;
+  background-color: $grey;
   border-radius: 666%;
   height: 1.5em;
   width: 1.5em;
   text-align: center;
+  color: $white;
+  &:hover {
+    color: $text-color;
+  }
 }
 .jumbotron {
   text-align: center;
@@ -87,17 +99,34 @@ ul {
   transition: all .35s ease-out 0s;
 
 }
-.slideup {
-  visibility: hidden;
-  max-height: 0;
-  padding: 0;
-  opacity: 0;
+.small-header {
+  position:fixed;
+  padding: 0.5rem;
+  .jumbotron {
+    visibility: hidden;
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+  .logo-sm {
+    display: block;
+  }
+  nav {
+    text-align: right;
 
+  }
 }
 
 .logo {
   position: relative;
   padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.logo-sm {
+  position: absolute;
+  left: 1rem;
+  bottom: ($nav-height - 18px) / 2;
+  display: none;
 }
 
 .logo-title {
@@ -109,12 +138,12 @@ ul {
   right: 0;
 }
 nav {
-  // position: fixed;
-  // top: 0;
-  // width: 100%;
   padding: 1rem;
   z-index: 10;
+  height: $nav-height;
   text-align: center;
+  font-size: 18px;
+  padding: ($nav-height - 18px) / 2;
   li {
     display: inline-block;
     margin: 0 1.5rem;
@@ -141,12 +170,6 @@ nav {
     }
 
   }
-}
-
-a {
-  text-decoration: none;
-  color: $text-color;
-  transition: color .2s ease-in-out 0s;
 }
 .content {
   position: relative;
@@ -185,6 +208,10 @@ a {
   &:hover h1 {
     opacity: 0.3;
   }
+}
+.spacer {
+  height: $nav-height;
+  display: none;
 }
 
 footer {
