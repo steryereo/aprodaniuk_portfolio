@@ -1,62 +1,84 @@
-(function() {
+
   'use strict';
 
-  var initSvg = function(path) {
-    var length = path.getTotalLength();
-    path.style.strokeDasharray = length + ' ' + length;
-    path.style.strokeDashoffset = length;
-  };
+  var showJumbotron = true;
+  var latestKnownScrollY = 0;
+  var ticking = false;
 
-  var svgAnimation = function(path, direction) {
-    direction = direction || 'in';
-    var length = path.getTotalLength();
+  window.onscroll = function() {
+    latestKnownScrollY = window.scrollY;
+    requestTick();
+  }
 
-    var startOffset = (direction === 'in') ? length : 0;
-    var endOffset = (direction === 'in') ? 0 : length;
+  function requestTick() {
+    if(!ticking) {
+      requestAnimationFrame(update);
+    }
+    ticking = true;
+  }
+  function update() {
+    ticking = false;
+    var currentScrollY = latestKnownScrollY;
+    if (currentScrollY > 30 && showJumbotron) {
+    
+    }
+  }
 
-    var currentFrame = 0;
-    var totalFrames = 60;
-    var handle = 0;
-
-    path.style.strokeDasharray = length + ' ' + length;
-    path.style.strokeDashoffset = startOffset;
-
-    var draw = function() {
-      var progress = currentFrame / totalFrames;
-      if (progress >= 1) {
-        path.style.strokeDashoffset = endOffset;
-        window.cancelAnimationFrame(handle);
-      } else {
-        currentFrame++;
-        path.style.strokeDashoffset = Math.floor(startOffset + progress * (endOffset - startOffset));
-        handle = window.requestAnimationFrame(draw);
+  function hideJumbo() {
+     var jt = document.querySelector('.jumbotron')
+      if (jt.classList)
+        jt.classList.add('slideup');
+      else {
+        jt.className += ' ' + 'slideup';
       }
-    };
-    draw();
-  };
+      showJumbotron = false;
+      document.querySelector('.close-icon').textContent = '+';
+  }
+  function showJumbo() {
+    var jt = document.querySelector('.jumbotron')
+    if (jt.classList)
+      jt.classList.remove('slideup');
+    else
+      jt.className = jt.className.replace(new RegExp('(^|\\b)' + 'slideup'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    showJumbotron = true;
+    document.querySelector('.close-icon').textContent = 'x';
+  }
 
-  $(document).ready(function() {
-    $('#fullpage').fullpage({
-      // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE']
-    });
-  });
+  function toggleJumbo() {
+    if (showJumbotron) {
+      hideJumbo();
+    } else {
+      showJumbo();
+    }
+  }
 
-  $('.svg-draw path').each(function() {
-    initSvg(this);
-  });
+document.addEventListener("DOMContentLoaded", function() {
+   document.querySelector('.close-icon').addEventListener('click', toggleJumbo);
+});
+ 
 
-  $('.svg-draw').on('mouseenter', function() {
-    $(this).find('path').each(function() {
-      svgAnimation(this, 'in');
-    });
-  });
-  $('.svg-draw').on('mouseleave', function() {
-    $(this).find('path').each(function() {
-      svgAnimation(this, 'out');
-    });
-  });
-  $('.scroll-down').click(function(e) {
-    e.preventDefault();
-    $.fn.fullpage.moveSectionDown();
-  });
-})();
+  // $(document).ready(function() {
+  //   $('#fullpage').fullpage({
+  //     // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE']
+  //   });
+  // });
+
+  // $('.svg-draw path').each(function() {
+  //   initSvg(this);
+  // });
+
+  // $('.svg-draw').on('mouseenter', function() {
+  //   $(this).find('path').each(function() {
+  //     svgAnimation(this, 'in');
+  //   });
+  // });
+  // $('.svg-draw').on('mouseleave', function() {
+  //   $(this).find('path').each(function() {
+  //     svgAnimation(this, 'out');
+  //   });
+  // });
+  // $('.scroll-down').click(function(e) {
+  //   e.preventDefault();
+  //   $.fn.fullpage.moveSectionDown();
+  // });
+// })();
