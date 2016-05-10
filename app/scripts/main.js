@@ -4,15 +4,28 @@ var showJumbotron = true;
 var latestKnownScrollY = 0;
 var ticking = false;
 
+var addClass = function(el, className) {
+  if (el.classList) {
+    el.classList.add(className);
+  } else {
+    el.className += ' ' + className;
+  }
+};
+
+var removeClass = function(el, className) {
+  if (el.classList) {
+    el.classList.remove(className);
+  } else {
+    el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+  }
+};
+
 var hideJumbo = function() {
   var header = document.querySelector('header');
   var spacer = document.querySelector('.spacer');
-  spacer.style.display = 'block';
-  if (header.classList) {
-    header.classList.add('small-header');
-  } else {
-    header.className += ' ' + 'small-header';
-  }
+  if (spacer) { addClass(spacer, 'small'); }
+
+  addClass(header, 'small-header');
   showJumbotron = false;
   document.querySelector('.close-icon').textContent = '+';
 };
@@ -20,15 +33,10 @@ var hideJumbo = function() {
 var showJumbo = function() {
   var header = document.querySelector('header');
   var spacer = document.querySelector('.spacer');
-  
-  if (header.classList) {
-    header.classList.remove('small-header');
-  } else {
-    header.className = header.className.replace(new RegExp('(^|\\b)' + 'small-header'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-  }
+  if (spacer) { removeClass(spacer, 'small'); }
+  removeClass(header, 'small-header');
   showJumbotron = true;
   document.querySelector('.close-icon').textContent = 'x';
-  spacer.style.display = 'none';
 };
 
 var toggleJumbo = function() {
@@ -54,6 +62,23 @@ var requestTick = function() {
   ticking = true;
 };
 
+
+/**
+ * Provides requestAnimationFrame in a cross browser way.
+ * @author paulirish / http://paulirish.com/
+ */
+if ( !window.requestAnimationFrame ) {
+  window.requestAnimationFrame = ( function() {
+    return window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+      window.setTimeout( callback, 1000 / 60 );
+    };
+  } )();
+}
+
 window.onscroll = function() {
   latestKnownScrollY = window.scrollY;
   requestTick();
@@ -62,7 +87,6 @@ window.onscroll = function() {
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.close-icon').addEventListener('click', toggleJumbo);
 });
-
 
 // $(document).ready(function() {
 //   $('#fullpage').fullpage({

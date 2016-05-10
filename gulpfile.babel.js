@@ -4,9 +4,21 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
+import data from 'gulp-data';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+
+gulp.task('views', () => {
+  return gulp.src('app/**/*.jade')
+    .pipe($.plumber())
+    .pipe(data(function(file) {
+      return { "portfolioData": require('./app/data.json') }
+    }))
+    .pipe($.jade({pretty: true}))
+    .pipe(gulp.dest('.tmp'))
+    .pipe(reload({stream: true}));
+});
 
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
@@ -63,6 +75,7 @@ const buildLintOptions = {
     }
   },
   rules: {
+    'global-strict': 0,
     /* Indentation */
     'no-mixed-spaces-and-tabs': 2,
     'indent': [2, 2],
@@ -72,6 +85,7 @@ const buildLintOptions = {
     'curly': 2,
     'eqeqeq': [2, 'smart'],
     'func-style': [2, 'expression'],
+    'no-unused-vars': 1,
     /* Semicolons */
     'semi': 2,
     'no-extra-semi': 2,
@@ -96,8 +110,8 @@ const buildLintOptions = {
 gulp.task('lint', lint('app/scripts/**/*.js', buildLintOptions));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['styles', 'scripts'], () => {
-  return gulp.src('app/*.html')
+gulp.task('html', ['views', 'styles', 'scripts'], () => {
+  return gulp.src(['app/*.html', '.tmp/*.html'])
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano()))
@@ -127,7 +141,8 @@ gulp.task('fonts', () => {
 gulp.task('extras', () => {
   return gulp.src([
     'app/*.*',
-    '!app/*.html'
+    '!app/*.html',
+    '!app/*.jade'
   ], {
     dot: true
   }).pipe(gulp.dest('dist'));
@@ -135,7 +150,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
+gulp.task('serve', ['views', 'styles', 'scripts', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -150,9 +165,11 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   gulp.watch([
     'app/*.html',
     'app/images/**/*',
-    '.tmp/fonts/**/*'
+    '.tmp/fonts/**/*',
+    '.tmp/**/*.html',
   ]).on('change', reload);
 
+  gulp.watch('app/**/*.jade', ['views']);
   gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('app/fonts/**/*', ['fonts']);
@@ -196,7 +213,8 @@ gulp.task('wiredep', () => {
     }))
     .pipe(gulp.dest('app/styles'));
 
-  gulp.src('app/*.html')
+  
+  gulp.src('app/layouts/*.jade')
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)*\.\./
     }))

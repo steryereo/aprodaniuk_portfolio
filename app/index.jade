@@ -1,0 +1,9 @@
+extends layouts/default
+
+block content
+  section.gallery
+    ul.row
+      each item in portfolioData.design
+        .thumbnail
+          img(src=item.image)
+    ul.row

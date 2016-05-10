@@ -36,6 +36,7 @@ $bg-main: #F5F5F5;
 $grey: #D8D8D8;
 $gold: #DFB83D;
 $nav-height: 100px;
+$lg-header-height: 400px;
 
 $med-breakpoint: 780px;
 $small-breakpoint: 480px;
@@ -62,6 +63,7 @@ a {
 }
 
 header {
+  position:fixed;
   background-color: $white;
   width: 100%;
 }
@@ -75,6 +77,7 @@ ul {
   padding: 0;
 }
 .close-icon {
+  z-index: 20;
   cursor: pointer;
   position: absolute;
   top: 1rem;
@@ -97,16 +100,15 @@ ul {
   overflow: hidden;
   max-height: 300px;
   transition: all .35s ease-out 0s;
-
 }
 .small-header {
-  position:fixed;
-  padding: 0.5rem;
+  // padding: 0.5rem;
   .jumbotron {
     visibility: hidden;
     max-height: 0;
     padding: 0;
     opacity: 0;
+    transform: translateY(-300px);
   }
   .logo-sm {
     display: block;
@@ -116,6 +118,7 @@ ul {
 
   }
 }
+
 
 .logo {
   position: relative;
@@ -147,7 +150,6 @@ nav {
   li {
     display: inline-block;
     margin: 0 1.5rem;
-    // font-size: 1.5rem;
     position: relative;
     a:before {
       content: "";
@@ -182,12 +184,16 @@ nav {
     font-size: 60px;
   }
 }
-.gallery {
-  padding: 10px;
-}
+
 .thumbnail {
+  display: inline-block;
   border: 10px solid $white;
   height: 240px;
+  margin: 0.5rem;
+  img {
+    height: 100%;
+    width: auto;
+  }
 }
 
 .svg-draw {
@@ -210,8 +216,20 @@ nav {
   }
 }
 .spacer {
+  height: $lg-header-height;
+  transition: height .35s ease-out 0s;
+}
+.spacer.small {
   height: $nav-height;
-  display: none;
+}
+
+.gallery {
+  padding: 1rem;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+.row {
+  // padding: 0.5rem;
 }
 
 footer {
