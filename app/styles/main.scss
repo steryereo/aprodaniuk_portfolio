@@ -40,7 +40,7 @@ $lg-header-height: 400px;
 
 $med-breakpoint: 780px;
 $small-breakpoint: 480px;
-
+$banner-time: 0.25s;
 html {
   box-sizing: border-box;
   font-family: $avenir;
@@ -99,7 +99,7 @@ ul {
   padding: 1rem;
   overflow: hidden;
   max-height: 300px;
-  transition: all .35s ease-out 0s;
+  transition: all $banner-time ease-out 0s;
 }
 .small-header {
   // padding: 0.5rem;
@@ -127,8 +127,9 @@ ul {
 }
 .logo-sm {
   position: absolute;
+  height: $nav-height * 1.5;
   left: 1rem;
-  bottom: ($nav-height - 18px) / 2;
+  top: $nav-height * 0.25;
   display: none;
 }
 
@@ -141,6 +142,7 @@ ul {
   right: 0;
 }
 nav {
+  position: relative;
   padding: 1rem;
   z-index: 10;
   height: $nav-height;
@@ -217,7 +219,7 @@ nav {
 }
 .spacer {
   height: $lg-header-height;
-  transition: height .35s ease-out 0s;
+  transition: height $banner-time ease-out 0s;
 }
 .spacer.small {
   height: $nav-height;
