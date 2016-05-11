@@ -1,0 +1,20 @@
+mixin gallery(data1, data2)  
+  section.gallery
+    ul.row
+      each item in data1
+        +thumbnail(item)
+    ul.row
+      each item in data2
+        +thumbnail(item)
+
+mixin thumbnail(item)
+  a(href=item.url)
+    .thumbnail
+      img(src=item.image)
+      div.overlay
+        div.caption
+          span.title= item.title
+          if item.role
+            span= ' | ' + item.role
+          else
+            span= ' | design'

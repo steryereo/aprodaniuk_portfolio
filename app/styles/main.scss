@@ -1,5 +1,5 @@
 // bower:scss
-@import "bower_components/font-awesome/scss/font-awesome.scss";
+// @import "bower_components/font-awesome/scss/font-awesome.scss";
 // endbower
 
 @font-face {
@@ -26,12 +26,26 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Avenir Next LT Pro';
+  src: url('../fonts/AvenirNextLTPro-Bold.eot');
+  src: url('../fonts/AvenirNextLTPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/AvenirNextLTPro-Bold.woff2') format('woff2'),
+    url('../fonts/AvenirNextLTPro-Bold.woff') format('woff'),
+    url('../fonts/AvenirNextLTPro-Bold.ttf') format('truetype'),
+    url('../fonts/AvenirNextLTPro-Bold.svg#AvenirNextLTPro-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
 
 $avenir: 'Avenir Next LT Pro', helvetica, arial, sans-serif;
 
 $orange: #E3B40C;
 $text-color: #515151;
 $white: #FFF;
+$light-grey: #CBCBCB;
 $bg-main: #F5F5F5;
 $grey: #D8D8D8;
 $gold: #DFB83D;
@@ -124,6 +138,9 @@ ul {
   position: relative;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
+  img {
+    max-width: 100%;
+  }
 }
 .logo-sm {
   position: absolute;
@@ -188,6 +205,7 @@ nav {
 }
 
 .thumbnail {
+  position: relative;
   display: inline-block;
   border: 10px solid $white;
   height: 240px;
@@ -195,6 +213,28 @@ nav {
   img {
     height: 100%;
     width: auto;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    opacity: 0;
+    transition: opacity .2s ease-in-out 0s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 6px;
+  }
+  .title {
+    font-weight: bold;
   }
 }
 
@@ -235,12 +275,14 @@ nav {
 }
 
 footer {
-  position:absolute;
+  font-size: 14px;
+  position:fixed;
   bottom: 0;
-  font-size: 1.5rem;
-  text-align: center;
-  padding: 2rem;
+  padding: 1em 0 1em 3em;
   width: 100%;
+  font-weight: 300;
+  color: $light-grey;
+  background-color: $text-color;
 }
 
 @keyframes bounce {
@@ -260,14 +302,26 @@ footer:hover .scroll-down {
 }
 
 
-@media (max-width: $small-breakpoint) {
+@media (max-width: $med-breakpoint) {
   .content {
     width: 100%;
   }
   nav li {
-    font-size: 1.2rem;
-    margin: 0 0.5rem;
 
+  }
+  .jumbotron {
+    font-size: 2rem;
+  }
+}
+@media (max-width: $small-breakpoint) {
+  nav li {
+    margin: 0 0.5rem;
+  }
+  .logo-title {
+    font-size: 1rem;
+  }
+  .jumbotron {
+    font-size: 1.5rem;
   }
 }
 

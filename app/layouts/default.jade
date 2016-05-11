@@ -12,7 +12,7 @@ html.no-js(lang='')
     // endbower
     // endbuild
     // build:css styles/main.css
-    link(rel='stylesheet', href='styles/main.css')
+    link(rel='stylesheet', href='/styles/main.css')
     // endbuild
     // build:js scripts/vendor/modernizr.js
     script(src='/bower_components/modernizr/modernizr.js')
@@ -23,28 +23,32 @@ html.no-js(lang='')
     | <![endif]-->
     header
       .jumbotron
-        .logo
-          img(src='images/AP-Mascot_FPO.png', alt='Alex Prodaniuk')
-          span.logo-title Alex Prodaniuk
+        a(href='/')
+          .logo
+            img(src='/images/AP-Mascot_FPO.png', alt='Alex Prodaniuk')
+            span.logo-title Alex Prodaniuk
         | Agile. Color obsessed. Designer
         br
         | of intelligent things.  
       nav
         ul.nav-list
-          .logo-sm
-            img(src='images/AP-Mascot_sm.png', alt='Alex Prodaniuk')
+          a(href='/')
+            .logo-sm
+              img(src='/images/AP-Mascot_sm.png', alt='Alex Prodaniuk')
           li
-            a(href='#') Design
+            a(href='/design') Design
           li
-            a(href='#') Atelier
+            a(href='/atelier') Atelier
           li
-            a(href='#') About
+            a(href='/about') About
       .close-icon x
     .spacer
     main
       block content
+    footer
+      | © Alex Prodaniuk 2016
     // build:js scripts/vendor.js
     // endbuild
     // build:js scripts/main.js
-    script(src='scripts/main.js')
+    script(src='/scripts/main.js')
     // endbuild

@@ -2,28 +2,92 @@
   "design": [
     {
       "title": "Chicken Surf Farm",
-      "image": "images/chickensurf4.jpg"
+      "image": "/images/chickensurf4.jpg",
+      "date": "Winter 2012",
+      "description": "Chicken Surf Farm is a small urban farm, located in San Francisco just off the beach. The packaging for this local honey was inspired by the farm's location and its curious hens, who can occasionally be seen posing on a surfboard. The labels feature a two-tone wrap around label to let the color of the honey shine through. Sanders, Chicken Surf's bantam leghorn, was illustrated to create the Farm's icon. All the type was hand drawn."
     },
     {
       "title": "Hip Hop for Hope",
-      "image": "images/hiphop1.jpg"
+      "image": "/images/hiphop1.jpg",
+      "date": "Winter 2010",
+      "description": "Hip Hop for Hope was a benefit concert celebrating the life of Melissa Hope Dennison, a young woman who was lost far too soon. The publicity for this event aimed to do justice to the vivacious woman, the beautiful family she left behind and raise money in her honor for the AIDS/LifeCycle. The pattern for this piece was created by layering hand illustrations, watercolors and typography.",
+      "url": "/design/hiphop"
     },
     {
       "title": "Christopher Salon",
-      "image": "images/christopher3.jpg"
+      "image": "/images/christopher3.jpg",
+      "date": "Summer 2011",
+      "description": "Christopher Downs brings style, skill, passion and sensibility to his salon. The logo was established but the brand needed to be tightened and extended to packaging, gift cards, business cards, and appointment cards."
     },
     {
       "title": "Heinke Frishman Wedding",
-      "image": "images/JD1.jpg"
+      "image": "/images/JD1.jpg",
+      "date": "Fall 2011",
+      "description": "Letterpress Wedding Invitations, inspired by vintage seed packets, with a modern flare.",
+      "url": "/design/wedding"
     },
     {
       "title": "Shawnimals",
-      "image": "images/shawnimals4.jpg"
+      "image": "/images/shawnimals4.jpg",
+      "date": "Spring 2009",
+      "description": "At the Chicago based character and toy design studio, art and design come together to tell stories. Though the work had to be tight, the stories allowed for a certain playfulness, as you see here with Moustachia, a baby female moustache. All of the examples shown here were created for professorisland.com, a blog extension of the Shawnimaland story. At Shawnimals fun is a natural by-product of design."
     },
     {
       "title": "Amp Infusions",
-      "image": "images/amp1.jpg"
+      "image": "/images/amp1.jpg",
+      "date": "Winter 2009",
+      "description": "An impulsive combination of culinary passions and design sensibilities, packaging for Amp Infusions was meant to feel both elegant and yet comfortable in an old wester apothecary. Liquid pig and Swift Inoculum are the beginning of a budding hobby."
     }
   ],
-  "atelier": []
+  "atelier": [
+    {
+      "title": "Fuselage",
+      "image": "/images/fuselage1.jpg",
+      "date": "Spring 2009",
+      "description": "Defined as the complete and central structure of an aircraft that connects the engine to the wings, the word fuselage inspired this thesis project. Moving beyond the framework of an aircraft, fuselage is a footwear company focused on the exploration of traditional materials meeting industrial ideas, rooted in travel and mobility and the connections that allows for said mobility. The brand includes classics and seasonal lines that would be more thematic and fleeting. Two pairs of fully functional footwear were then created, each with their own respective packaging solutions."
+    },
+    {
+      "title": "Toasted Marshmallows",
+      "image": "/images/marshmallow1.jpg",
+      "date": "Fall 2007",
+      "description": "Playing with ideas of food and how it can be presented in other forms gave way to a collection called Edible. The collection was then split into subcategories: Quench, Savor, Season and Indulge. Creating the Toasted Marshmallow shoes required the close study of marshmallows themselves, followed by imbedding foam dots between the lining and upper to create texture, and finally airbrushing to achieve a warm, golden-brown, toasted effect."
+
+    },
+    {
+      "title": "Boxing Boots",
+      "image": "/images/boxingboots2.jpg",
+      "date": "Fall 2008",
+      "description": "Made in collaboration with fellow graphic / surface designer Zach Tyree, these boots are based on traditional athletic wear. The pattern utilizes weapons and tools that create a slightly humorous and intimidating pattern. Each boot features a single wrench on the heel."
+    },
+    {
+      "title": "Elephant Boots",
+      "image": "/images/elephantboots1.jpg",
+      "date": "Spring 2008",
+      "description": "Hand distressed garments, and the amount of attention to detail and work required to achieve them, inspired the elephant boots. The upper is constructed out of a thick but very soft leather that has been skived, patched with a cream leather, and then lined with hand dyed raw silk. Maple banana heels were constructed to be reminiscent of tusks. Fully functional buttons line the front of each boot."
+    },
+    {
+      "title": "Darwinian Dandies",
+      "image": "/images/dandies5.jpg",
+      "date": "Spring 2009",
+      "description": "Made to go with Fashion Designer Brad Callahan's Spring 2009 collection, these shoes explore the possibilities of gender bending and fantasy in traditional men's footwear. The result was patent leather slip-ons somewhere between a classic pump and a men's loafer. Not for everyone, that's for sure, but definitely fabulous. Photographs by Lucas Blair photography."
+    },
+    {
+      "title": "California Shoes",
+      "image": "/images/california1.jpg",
+      "date": "Spring 2008",
+      "description": "Inspired by warm weather and the simplicity of how buttons can fasten a wide range of materials, the California shoes are simply happy. The straps are threaded between the toes through a deconstructed button. As the thin straps wrap around the golden upper, they create an interesting gathered affect that is still quite comfortable."
+    },
+    {
+      "title": "Third Class",
+      "image": "/images/thirdclass1.jpg",
+      "date": "Spring 2008",
+      "description": "Originally a part of a larger collection called Travel Rack, the Third Class shoe has only two pattern pieces in addition to its sole and stiffeners. It is made from a soft buffalo leather that has been topically re-dyed so that as one wears the shoe a contrast in the leather and the dye becomes apparent. The top flap is fastened with a single cord that wraps under the sole, and sets in grooves so that it will not be walked on. This cord imitates how one may tie something to the roof of a car with the spontaneity of travel."
+    },
+    {
+      "title": "Resinance",
+      "image": "/images/resin1.jpg",
+      "date": "Winter 2012",
+      "description": "Old wooden door reinvisioned as a dining room table."
+    }
+  ]
 }

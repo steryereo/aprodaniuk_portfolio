@@ -1,9 +1,9 @@
 extends layouts/default
 
 block content
-  section.gallery
-    ul.row
-      each item in portfolioData.design
-        .thumbnail
-          img(src=item.image)
-    ul.row
+
+  include mixins/mixins
+  
+  - var data1 = portfolioData.design.slice(0, Math.floor(portfolioData.design.length / 2)).concat(portfolioData.atelier.slice(0, Math.floor(portfolioData.atelier.length / 2)))
+  - var data2 = portfolioData.design.slice(Math.floor(portfolioData.design.length / 2)).concat(portfolioData.atelier.slice(Math.floor(portfolioData.atelier.length / 2)))
+  +gallery(data1, data2)

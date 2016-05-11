@@ -111,7 +111,7 @@ gulp.task('lint', lint('app/scripts/**/*.js', buildLintOptions));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['views', 'styles', 'scripts'], () => {
-  return gulp.src(['app/*.html', '.tmp/*.html'])
+  return gulp.src(['app/**/*.html', '.tmp/**/*.html'])
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano()))
@@ -142,7 +142,7 @@ gulp.task('extras', () => {
   return gulp.src([
     'app/*.*',
     '!app/*.html',
-    '!app/*.jade'
+    '!app/**/*.jade'
   ], {
     dot: true
   }).pipe(gulp.dest('dist'));
@@ -169,6 +169,7 @@ gulp.task('serve', ['views', 'styles', 'scripts', 'fonts'], () => {
     '.tmp/**/*.html',
   ]).on('change', reload);
 
+  gulp.watch('app/**/*.json', ['views']);
   gulp.watch('app/**/*.jade', ['views']);
   gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
