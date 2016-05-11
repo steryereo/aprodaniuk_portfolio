@@ -284,6 +284,7 @@ nav {
   width:100%;
   border: 34px solid $white;
   img {
+    display: block;
     width: 100%;
   }
 }
@@ -291,11 +292,13 @@ nav {
   float: left;
   border: 1rem solid $white;
   width: 48%;
-  margin: 1rem 0;
+  height: auto;
+  margin-top: 4%;
   &:nth-child(2n) {
     float: right; 
   }
   img {
+    display: block;
     width: 100%;
   }
 }
@@ -314,7 +317,7 @@ footer {
   font-size: 14px;
   position:fixed;
   bottom: 0;
-  padding: 1em 0 1em 3em;
+  padding: 16px 0 12px 48px;
   width: 100%;
   font-weight: 300;
   color: $light-grey;

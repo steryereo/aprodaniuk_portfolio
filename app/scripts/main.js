@@ -81,7 +81,9 @@ if ( !window.requestAnimationFrame ) {
 
 window.onscroll = function() {
   latestKnownScrollY = window.scrollY;
-  requestTick();
+  if (showJumbotron) {
+    requestTick();
+  }
 };
 
 document.addEventListener('DOMContentLoaded', function() {
