@@ -10,7 +10,7 @@ mixin gallery(data1, data2)
 mixin thumbnail(item)
   a(href=item.url)
     .thumbnail
-      img(src=item.image)
+      img(src=item.images[0])
       div.overlay
         div.caption
           span.title= item.title
@@ -18,3 +18,15 @@ mixin thumbnail(item)
             span= ' | ' + item.role
           else
             span= ' | design'
+
+mixin project(item)
+  div.content.cf
+    div.main-image
+      img(src=item.images[0])
+      div.description
+        h2= item.title
+        span= item.description
+    ul.images
+      - for(var i = 1; i < item.images.length; i++ )
+        li.project-image
+          img(src=item.images[i]) 

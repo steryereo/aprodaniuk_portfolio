@@ -1,0 +1,13 @@
+extends ../../layouts/default
+
+block content
+
+  include ../../mixins/mixins  
+  -
+    var item;
+    for (var i = 0; i < portfolioData.design.length; i++) {
+      if (portfolioData.design[i].title === "Heinke Frishman Wedding") {
+        item = portfolioData.design[i];
+      }
+    }
+  +project(item)

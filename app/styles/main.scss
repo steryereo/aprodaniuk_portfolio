@@ -68,6 +68,7 @@ body {
   color: $text-color;
   background-color: $bg-main;
   margin: 0;
+  padding-bottom: 50px;
 }
 
 a {
@@ -80,9 +81,16 @@ header {
   position:fixed;
   background-color: $white;
   width: 100%;
+  z-index: 10;
 }
 
 h1, h2, h3, h4, h5, h6 {
+}
+
+.cf:after {
+    content:" ";
+    display:block;
+    clear:both;
 }
 
 ul {
@@ -194,14 +202,10 @@ nav {
 }
 .content {
   position: relative;
-  background: #eee;
-  margin: 50px auto;
-  width: 50%;
-  max-width: 600px;
-  padding: 2rem;
-  h1 {
-    font-size: 60px;
-  }
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1024px;
+  padding: 20px;
 }
 
 .thumbnail {
@@ -272,6 +276,38 @@ nav {
 }
 .row {
   // padding: 0.5rem;
+}
+
+.main-image {
+  position: relative;
+  margin: 0 auto;
+  width:100%;
+  border: 34px solid $white;
+  img {
+    width: 100%;
+  }
+}
+.project-image {
+  float: left;
+  border: 1rem solid $white;
+  width: 48%;
+  margin: 1rem 0;
+  &:nth-child(2n) {
+    float: right; 
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.description {
+  position: absolute;
+  width: 40%;
+  height: 80%;
+  background-color: $white;
+  left: 55%;
+  top: 10%;
+  padding: 1em;
 }
 
 footer {
