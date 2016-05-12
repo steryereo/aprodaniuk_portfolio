@@ -27,7 +27,7 @@ var hideJumbo = function() {
 
   addClass(header, 'small-header');
   showJumbotron = false;
-  document.querySelector('.close-icon').textContent = '+';
+  document.querySelector('header .close-icon').textContent = '+';
 };
 
 var showJumbo = function() {
@@ -36,9 +36,21 @@ var showJumbo = function() {
   if (spacer) { removeClass(spacer, 'small'); }
   removeClass(header, 'small-header');
   showJumbotron = true;
-  document.querySelector('.close-icon').textContent = 'x';
+  document.querySelector('header .close-icon').textContent = 'x';
 };
 
+var hideDescription = function(e) {
+  var descriptionElem = e.currentTarget.parentElement;
+  addClass(descriptionElem, 'fade-out');
+  var infoIcon = document.querySelector('.info-icon');
+  removeClass(infoIcon, 'fade-out');
+};
+var showDescription = function(e) {
+  var descriptionElem = document.querySelector('.description');
+  removeClass(descriptionElem, 'fade-out');
+  var infoIcon = document.querySelector('.info-icon');
+  addClass(infoIcon, 'fade-out');
+};
 var toggleJumbo = function() {
   if (showJumbotron) {
     hideJumbo();
@@ -87,7 +99,9 @@ window.onscroll = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('.close-icon').addEventListener('click', toggleJumbo);
+  document.querySelector('header .close-icon').addEventListener('click', toggleJumbo);
+  document.querySelector('.main-image .close-icon').addEventListener('click', hideDescription);
+  document.querySelector('.main-image .info-icon').addEventListener('click', showDescription);
 });
 
 // $(document).ready(function() {

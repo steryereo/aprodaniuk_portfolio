@@ -24,8 +24,10 @@ mixin project(item)
     div.main-image
       img(src=item.images[0])
       div.description
-        h2= item.title
+        .title= item.title
         span= item.description
+        .close-icon x
+      .info-icon.fade-out i
     ul.images
       - for(var i = 1; i < item.images.length; i++ )
         li.project-image

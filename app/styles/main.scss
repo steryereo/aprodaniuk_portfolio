@@ -79,7 +79,7 @@ a {
 
 header {
   position:fixed;
-  background-color: $white;
+  background-color: rgba($white, 0.95);
   width: 100%;
   z-index: 10;
 }
@@ -98,12 +98,10 @@ ul {
   margin: 0;
   padding: 0;
 }
-.close-icon {
+.close-icon, .info-icon {
   z-index: 20;
   cursor: pointer;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
   background-color: $grey;
   border-radius: 666%;
   height: 1.5em;
@@ -113,6 +111,18 @@ ul {
   &:hover {
     color: $text-color;
   }
+}
+.close-icon {
+  top: 1rem;
+  right: 1rem;
+}
+.info-icon {
+  font-family: Garamond, serif;
+  font-weight: bold;
+  font-style: italic;
+  bottom: 1rem;
+  right: 1rem;
+  border: 3px solid $white;
 }
 .jumbotron {
   text-align: center;
@@ -211,9 +221,9 @@ nav {
 .thumbnail {
   position: relative;
   display: inline-block;
-  border: 10px solid $white;
-  height: 240px;
-  margin: 0.5rem;
+  border: 5px solid $white;
+  height: 290px;
+  margin: 12px;
   img {
     height: 100%;
     width: auto;
@@ -237,9 +247,10 @@ nav {
     left: 0;
     padding: 6px;
   }
-  .title {
-    font-weight: bold;
-  }
+}
+.title {
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .svg-draw {
@@ -282,7 +293,7 @@ nav {
   position: relative;
   margin: 0 auto;
   width:100%;
-  border: 34px solid $white;
+  border: 5px solid $white;
   img {
     display: block;
     width: 100%;
@@ -290,7 +301,7 @@ nav {
 }
 .project-image {
   float: left;
-  border: 1rem solid $white;
+  border: 5px solid $white;
   width: 48%;
   height: auto;
   margin-top: 4%;
@@ -306,11 +317,21 @@ nav {
 .description {
   position: absolute;
   width: 40%;
-  height: 80%;
-  background-color: $white;
+  font-size: 15px;
+  background-color: rgba($white, 0.95);
   left: 55%;
-  top: 10%;
-  padding: 1em;
+  bottom: 5%;
+  padding: 40px 35px 35px 35px;
+  opacity: 1;
+  transition: opacity $banner-time ease-out 0s;
+  .title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+}
+.fade-out {
+  opacity: 0;
 }
 
 footer {
@@ -350,6 +371,10 @@ footer:hover .scroll-down {
   }
   .jumbotron {
     font-size: 2rem;
+  }
+  .project-image {
+    width: 100%;
+    height: auto;
   }
 }
 @media (max-width: $small-breakpoint) {
