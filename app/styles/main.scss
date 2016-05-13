@@ -82,6 +82,7 @@ svg {
   width: 100%;
 }
 header {
+  height: $lg-header-height;
   position:relative;
   width: 100%;
   z-index: 10;
@@ -395,6 +396,9 @@ footer {
   }
   nav li {
 
+  }
+  .header-icon {
+    bottom: 0;
   }
   .header-lg {
     font-size: 2rem;
