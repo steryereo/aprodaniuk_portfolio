@@ -127,8 +127,13 @@ ul {
   right: 1rem;
   border: 3px solid $white;
 }
-.header-lg {
+.header-sm, .header-lg {
   background-color: rgba($white, 0.95);
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.header-lg {
   text-align: center;
   font-weight: 300;
   font-size: 45px;
@@ -136,9 +141,6 @@ ul {
   height: $lg-header-height;
 }
 .header-sm {
-  background-color: rgba($white, 0.95);
-  position: absolute;
-  width: 100%;
   bottom: 0;
   height: $nav-height;
   text-align: right;

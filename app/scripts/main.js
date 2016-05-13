@@ -1,6 +1,5 @@
 'use strict';
 
-var showJumbotron = true;
 var latestKnownScrollY = 0;
 var ticking = false;
 var lgHeaderHeight = 345 - 68;
@@ -36,25 +35,6 @@ var removeClass = function(el, className) {
   }
 };
 
-var hideJumbo = function() {
-  var header = document.querySelector('header');
-  var spacer = document.querySelector('.spacer');
-  if (spacer) { addClass(spacer, 'small'); }
-
-  addClass(header, 'small-header');
-  showJumbotron = false;
-  document.querySelector('header .close-icon').textContent = '+';
-};
-
-var showJumbo = function() {
-  var header = document.querySelector('header');
-  var spacer = document.querySelector('.spacer');
-  if (spacer) { removeClass(spacer, 'small'); }
-  removeClass(header, 'small-header');
-  showJumbotron = true;
-  document.querySelector('header .close-icon').textContent = 'x';
-};
-
 var hideDescription = function(e) {
   var descriptionElem = e.currentTarget.parentElement;
   addClass(descriptionElem, 'fade-out');
@@ -69,7 +49,6 @@ var showDescription = function(e) {
 };
 
 var stickHeader = function (header) {
-  console.log('stick');
   addClass(header, 'fixed-header');
   header.setAttribute('style', 'opacity: 1;');
   headerStuck = true;
@@ -77,7 +56,6 @@ var stickHeader = function (header) {
 var unstickHeader = function (header) {
   removeClass(header, 'fixed-header');
   headerStuck = false;
-  console.log('unstick');
 };
 var scrollUpdate = function() {
   ticking = false;
@@ -126,9 +104,9 @@ if (!window.requestAnimationFrame) {
 window.onscroll = function(e) {
   latestKnownScrollY = window.scrollY;
   // console.log(latestKnownScrollY);
-  if (showJumbotron) {
-    requestTick();
-  }
+  // if (showJumbotron) {
+  requestTick();
+  // }
 };
 
 document.addEventListener('DOMContentLoaded', function() {
