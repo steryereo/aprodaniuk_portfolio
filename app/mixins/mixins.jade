@@ -31,4 +31,9 @@ mixin project(item)
     ul.images
       - for(var i = 1; i < item.images.length; i++ )
         li.project-image
-          img(src=item.images[i]) 
+          img(src=item.images[i])
+
+mixin downCaret()
+  svg (viewBox="0 0 50 50")
+    rect.icon(fill="none" height="50" width="50")
+      polygon(points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 ")
