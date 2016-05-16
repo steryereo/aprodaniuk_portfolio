@@ -181,7 +181,7 @@ ul {
   right: 0;
 }
 .color-change, .color-change-stroke {
-  transition: all 2s ease-in-out 0s;
+  transition: all 3s ease-in-out 0s;
 }
 
 nav {
@@ -420,12 +420,22 @@ footer {
   animation:bounce 5s infinite;
   margin: 0 auto;
   svg {
-    transform: rotate(180deg);
+    // transform: rotate(180deg);
     max-width: 100%;
     polygon {
       fill: $text-color;
     }
   }
+}
+
+.about-bg {
+  background: url(../images/bricks.png) no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 @media (max-width: $med-breakpoint) {

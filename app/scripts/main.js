@@ -1,7 +1,5 @@
 'use strict';
 
-var latestKnownScrollY = 0;
-var ticking = false;
 var lgHeaderHeight = 345 - 68;
 var headerStuck = false;
 
@@ -58,73 +56,6 @@ var unstickHeader = function(header) {
   headerStuck = false;
 };
 
-var headerInit = function() {
-  addScrollListener(window, function(sX, sY) {
-    var headerSm = document.querySelector('.header-sm');
-    var headerLg = document.querySelector('.header-lg');
-    if (headerLg && headerSm) {
-      if (sY <= lgHeaderHeight) {
-        if (headerStuck) {
-          unstickHeader(headerSm);
-        }
-        var opacity = (sY / lgHeaderHeight);
-        headerSm.setAttribute('style', 'opacity: ' + (opacity * opacity * opacity).toFixed(2) + ';');
-        headerLg.setAttribute('style', 'transform: translateY(-' + (opacity * 68).toFixed(0) + 'px);');
-      } else if (!headerStuck) {
-        stickHeader(headerSm);
-      }
-    }
-  });
-  var scrollButton = document.querySelector('.header-icon');
-  scrollButton.addEventListener('click', function() {
-    animateScroll(document.body, lgHeaderHeight, 0.25);
-  });
-};
-
-var galleryInit = function() {
-  var gallery = document.querySelector('.gallery');
-  var totalWidth = gallery.scrollWidth;
-  var rows = gallery.querySelectorAll('.row');
-  [].forEach.call(rows, function(row) {
-    row.innerHTML = row.innerHTML + row.innerHTML + row.innerHTML;
-  });
-  var loopGallery = function(sX, sY) {
-    if (sX < 200) {
-      this.element.scrollLeft = sX + totalWidth;
-    } else if (sX > totalWidth + 200) {
-      this.element.scrollLeft = sX - totalWidth;
-    }
-  };
-  addScrollListener(gallery, loopGallery);
-  gallery.scrollLeft = totalWidth;
-  var scrolling = false;
-  var doScroll = true;
-  var scrollGallery = function(distance) {
-    if (doScroll) {
-      scrolling = true;
-      animateScroll(gallery, gallery.scrollLeft + distance, 0.01, 'scrollLeft', function() {
-        loopGallery.call({element: gallery}, gallery.scrollLeft, 0);
-        scrollGallery(distance);
-      });
-    }
-  };
-  gallery.querySelector('.gallery-left').addEventListener('mouseenter', function () {
-    doScroll = true;
-    scrollGallery(-10);
-  });
-  gallery.querySelector('.gallery-left').addEventListener('mouseleave', function() {
-    doScroll = false;
-  });
-  gallery.querySelector('.gallery-right').addEventListener('mouseenter', function() {
-    doScroll = true;
-    scrollGallery(10);
-  });
-  gallery.querySelector('.gallery-right').addEventListener('mouseleave', function() {
-    doScroll = false;
-  });
-};
-
-
 var addScrollListener = function(elem, scrollFunc) {
   var listener = {};
   listener.ticking = false;
@@ -176,6 +107,73 @@ var animateScroll = function(element, target, duration, direction, callback) {
   draw();
 
 };
+
+var headerInit = function() {
+  addScrollListener(window, function(sX, sY) {
+    var headerSm = document.querySelector('.header-sm');
+    var headerLg = document.querySelector('.header-lg');
+    if (headerLg && headerSm) {
+      if (sY <= lgHeaderHeight) {
+        if (headerStuck) {
+          unstickHeader(headerSm);
+        }
+        var opacity = (sY / lgHeaderHeight);
+        headerSm.setAttribute('style', 'opacity: ' + (opacity * opacity * opacity).toFixed(2) + ';');
+        headerLg.setAttribute('style', 'transform: translateY(-' + (opacity * 68).toFixed(0) + 'px);');
+      } else if (!headerStuck) {
+        stickHeader(headerSm);
+      }
+    }
+  });
+  var scrollButton = document.querySelector('.header-icon');
+  scrollButton.addEventListener('mousedown', function() {
+    animateScroll(document.body, lgHeaderHeight, 0.25);
+  });
+};
+
+var galleryInit = function() {
+  var gallery = document.querySelector('.gallery');
+  var totalWidth = gallery.scrollWidth;
+  var rows = gallery.querySelectorAll('.row');
+  [].forEach.call(rows, function(row) {
+    row.innerHTML = row.innerHTML + row.innerHTML + row.innerHTML;
+  });
+  var loopGallery = function(sX, sY) {
+    if (sX < 200) {
+      this.element.scrollLeft = sX + totalWidth;
+    } else if (sX > totalWidth + 200) {
+      this.element.scrollLeft = sX - totalWidth;
+    }
+  };
+  addScrollListener(gallery, loopGallery);
+  gallery.scrollLeft = totalWidth;
+  var scrolling = false;
+  var doScroll = true;
+  var scrollGallery = function(distance) {
+    if (doScroll) {
+      scrolling = true;
+      animateScroll(gallery, gallery.scrollLeft + distance, 0.01, 'scrollLeft', function() {
+        loopGallery.call({element: gallery}, gallery.scrollLeft, 0);
+        scrollGallery(distance);
+      });
+    }
+  };
+  gallery.querySelector('.gallery-left').addEventListener('mouseenter', function () {
+    doScroll = true;
+    scrollGallery(-10);
+  });
+  gallery.querySelector('.gallery-left').addEventListener('mouseleave', function() {
+    doScroll = false;
+  });
+  gallery.querySelector('.gallery-right').addEventListener('mouseenter', function() {
+    doScroll = true;
+    scrollGallery(10);
+  });
+  gallery.querySelector('.gallery-right').addEventListener('mouseleave', function() {
+    doScroll = false;
+  });
+};
+
 
 /**
  * Provides requestAnimationFrame in a cross browser way.
