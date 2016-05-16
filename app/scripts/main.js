@@ -7,7 +7,7 @@ var headerStuck = false;
 
 var colorIndex = 0;
 var colors = ['#595959', '#3cd3c4', '#747b6a', '#b89c2f', '#321F39', '#ef6c48'];
-var changeColor = function (color) {
+var changeColor = function(color) {
   var colorchange = document.querySelectorAll('.color-change');
   var colorchangestroke = document.querySelectorAll('.color-change-stroke');
   [].forEach.call(colorchange, function(el) {
@@ -48,42 +48,134 @@ var showDescription = function(e) {
   addClass(infoIcon, 'fade-out');
 };
 
-var stickHeader = function (header) {
+var stickHeader = function(header) {
   addClass(header, 'fixed-header');
   header.setAttribute('style', 'opacity: 1;');
   headerStuck = true;
 };
-var unstickHeader = function (header) {
+var unstickHeader = function(header) {
   removeClass(header, 'fixed-header');
   headerStuck = false;
 };
-var scrollUpdate = function() {
-  ticking = false;
-  var currentScrollY = latestKnownScrollY;
-  var headerSm = document.querySelector('.header-sm');
-  var headerLg = document.querySelector('.header-lg');
-  if (headerLg && headerSm) {
-    if (currentScrollY <= lgHeaderHeight) {
-      if (headerStuck) {
-        unstickHeader(headerSm);
+
+var headerInit = function() {
+  addScrollListener(window, function(sX, sY) {
+    var headerSm = document.querySelector('.header-sm');
+    var headerLg = document.querySelector('.header-lg');
+    if (headerLg && headerSm) {
+      if (sY <= lgHeaderHeight) {
+        if (headerStuck) {
+          unstickHeader(headerSm);
+        }
+        var opacity = (sY / lgHeaderHeight);
+        headerSm.setAttribute('style', 'opacity: ' + (opacity * opacity * opacity).toFixed(2) + ';');
+        headerLg.setAttribute('style', 'transform: translateY(-' + (opacity * 68).toFixed(0) + 'px);');
+      } else if (!headerStuck) {
+        stickHeader(headerSm);
       }
-      var opacity = (currentScrollY / lgHeaderHeight);
-      headerSm.setAttribute('style', 'opacity: ' + (opacity * opacity * opacity).toFixed(2) + ';');
-      headerLg.setAttribute('style', 'transform: translateY(-' + (opacity * 68).toFixed(0) + 'px);');
-      // headerLg.setAttribute('style', 'opacity: ' + (1 - opacity).toFixed(2) + ';');
-    } else if (!headerStuck) {
-      stickHeader(headerSm);
     }
-  }
+  });
+  var scrollButton = document.querySelector('.header-icon');
+  scrollButton.addEventListener('click', function() {
+    animateScroll(document.body, lgHeaderHeight, 0.25);
+  });
 };
 
-var requestTick = function() {
-  if (!ticking) {
-    requestAnimationFrame(scrollUpdate);
-  }
-  ticking = true;
+var galleryInit = function() {
+  var gallery = document.querySelector('.gallery');
+  var totalWidth = gallery.scrollWidth;
+  var rows = gallery.querySelectorAll('.row');
+  [].forEach.call(rows, function(row) {
+    row.innerHTML = row.innerHTML + row.innerHTML + row.innerHTML;
+  });
+  var loopGallery = function(sX, sY) {
+    if (sX < 200) {
+      this.element.scrollLeft = sX + totalWidth;
+    } else if (sX > totalWidth + 200) {
+      this.element.scrollLeft = sX - totalWidth;
+    }
+  };
+  addScrollListener(gallery, loopGallery);
+  gallery.scrollLeft = totalWidth;
+  var scrolling = false;
+  var doScroll = true;
+  var scrollGallery = function(distance) {
+    if (doScroll) {
+      scrolling = true;
+      animateScroll(gallery, gallery.scrollLeft + distance, 0.01, 'scrollLeft', function() {
+        loopGallery.call({element: gallery}, gallery.scrollLeft, 0);
+        scrollGallery(distance);
+      });
+    }
+  };
+  gallery.querySelector('.gallery-left').addEventListener('mouseenter', function () {
+    doScroll = true;
+    scrollGallery(-10);
+  });
+  gallery.querySelector('.gallery-left').addEventListener('mouseleave', function() {
+    doScroll = false;
+  });
+  gallery.querySelector('.gallery-right').addEventListener('mouseenter', function() {
+    doScroll = true;
+    scrollGallery(10);
+  });
+  gallery.querySelector('.gallery-right').addEventListener('mouseleave', function() {
+    doScroll = false;
+  });
 };
 
+
+var addScrollListener = function(elem, scrollFunc) {
+  var listener = {};
+  listener.ticking = false;
+  listener.scrollFunc = scrollFunc || function() {};
+  listener.element = elem;
+
+  elem.onscroll = function(e) {
+    if (!listener.ticking) {
+      var latestX = listener.element.scrollLeft || listener.element.scrollX;
+      var latestY = listener.element.scrollTop || listener.element.scrollY;
+      requestAnimationFrame(function() {
+        this.ticking = false;
+        this.scrollFunc.call(this, latestX, latestY);
+      }.bind(listener));
+    }
+    listener.ticking = true;
+  };
+};
+
+var animateScroll = function(element, target, duration, direction, callback) {
+  var scrollDir = direction || 'scrollTop';
+
+  if (duration <= 0) {
+    element[scrollDir] = target;
+    return;
+  }
+
+  target = Math.round(target);
+  var totalFrames = Math.round(duration * 60);
+
+  var start = element[scrollDir];
+  var distance = target - start;
+
+  var currentFrame = 0;
+  var handle = 0;
+
+  var draw = function() {
+    var progress = currentFrame / totalFrames;
+    if (progress >= 1) {
+      element[scrollDir] = target;
+      window.cancelAnimationFrame(handle);
+      if (callback) { callback(); }
+    } else {
+      currentFrame++;
+      element[scrollDir] = Math.floor(start + progress * (target - start));
+      handle = window.requestAnimationFrame(draw);
+    }
+  };
+  draw();
+
+};
 
 /**
  * Provides requestAnimationFrame in a cross browser way.
@@ -101,16 +193,11 @@ if (!window.requestAnimationFrame) {
   })();
 }
 
-window.onscroll = function(e) {
-  latestKnownScrollY = window.scrollY;
-  // console.log(latestKnownScrollY);
-  // if (showJumbotron) {
-  requestTick();
-  // }
-};
 
 document.addEventListener('DOMContentLoaded', function() {
-  // document.querySelector('header .close-icon').addEventListener('click', toggleJumbo);
+  headerInit();
+  var gallery = document.querySelector('.gallery');
+  if (gallery) { galleryInit(); }
   var infoHide = document.querySelector('.main-image .close-icon');
   if (infoHide) { infoHide.addEventListener('click', hideDescription); }
   var infoShow = document.querySelector('.main-image .info-icon');

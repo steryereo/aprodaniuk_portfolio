@@ -1,11 +1,16 @@
 mixin gallery(data1, data2)  
-  section.gallery
-    ul.row
-      each item in data1
-        +thumbnail(item)
-    ul.row
-      each item in data2
-        +thumbnail(item)
+  div.hide-scroll-outer
+    section.gallery
+      ul.row
+        each item in data1
+          +thumbnail(item)
+      ul.row
+        each item in data2
+          +thumbnail(item)
+      div.gallery-left
+        +downCaret()
+      div.gallery-right
+        +downCaret()
 
 mixin thumbnail(item)
   a(href=item.url)
@@ -34,6 +39,4 @@ mixin project(item)
           img(src=item.images[i])
 
 mixin downCaret()
-  svg (viewBox="0 0 50 50")
-    rect.icon(fill="none" height="50" width="50")
-      polygon(points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 ")
+  | <svg version="1.1" viewBox="0 0 50 50" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect fill="none" height="50" width="50"/><polygon points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 "/></svg>

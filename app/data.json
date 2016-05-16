@@ -51,6 +51,13 @@
       "images": ["/images/amp1.jpg"],
       "date": "Winter 2009",
       "description": "An impulsive combination of culinary passions and design sensibilities, packaging for Amp Infusions was meant to feel both elegant and yet comfortable in an old wester apothecary. Liquid pig and Swift Inoculum are the beginning of a budding hobby."
+    },
+    {
+      "title": "Socks",
+      "images": ["/images/socks.png"],
+      "date": "Winter 2015",
+      "role": "design",
+      "description": ""
     }
   ],
   "atelier": [

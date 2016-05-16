@@ -205,7 +205,6 @@ nav {
       transition: all .2s ease-in-out 0s;
     }
     & a:hover {
-      //color: $orange;
       &:before {
         visibility: visible;
         transform: scaleX(1);
@@ -227,10 +226,12 @@ nav {
   display: inline-block;
   border: 5px solid $white;
   height: 290px;
+  width: 387px; 
   margin: 12px;
+  overflow: hidden;
   img {
     height: 100%;
-    width: auto;
+    min-width: 100%;
   }
   .overlay {
     position: absolute;
@@ -285,13 +286,48 @@ nav {
   height: $nav-height;
 }
 
+// .hide-scroll-outer {
+//   // height: 400px;
+//   // border: 5px solid purple;
+//   width: 100%;
+//   position: relative;
+//   overflow: hidden;
+// }
+.hide-scroll-outer {
+  position: relative;
+}
+ 
 .gallery {
   padding: 1rem;
   overflow-y: scroll;
   white-space: nowrap;
 }
-.row {
-  // padding: 0.5rem;
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.row:nth-child(1) {
+  position: relative;
+  left: ((387px / 2) + 12px) * -1;
+}
+
+.gallery-left, .gallery-right {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width: 40px;
+  &:hover svg {
+    fill: $light-grey;
+  }
+}
+
+.gallery-left {
+  left: 10px;
+  transform: rotate(90deg);
+}
+.gallery-right {
+  right: 10px;
+  transform: rotate(-90deg);
 }
 
 .main-image {
@@ -380,15 +416,14 @@ footer {
   height: 30px;
   animation:bounce 5s infinite;
   margin: 0 auto;
-
   svg {
+    transform: rotate(180deg);
     max-width: 100%;
     polygon {
-      stroke: $text-color;
+      fill: $text-color;
     }
   }
 }
-
 
 @media (max-width: $med-breakpoint) {
   .content {
