@@ -38,5 +38,47 @@ mixin project(item)
         li.project-image
           img(src=item.images[i])
 
+mixin headerLg
+  header
+    .header-sm
+      nav
+        ul.nav-list
+          a(href='/')
+            .logo-sm
+              //- img(src='/images/AP-Mascot_sm.png', alt='Alex Prodaniuk')
+          li
+            a(href='/design/') Design
+          li
+            a(href='/atelier/') Atelier
+          li
+            a(href='/about/') About
+    .header-lg
+      a(href='/')
+        .logo
+          //- img(src='/images/AP-Mascot_FPO.png', alt='Alex Prodaniuk')
+          include ../mixins/octo.jade
+          span.logo-title Alex Prodaniuk
+      | Agile. Color obsessed. Designer
+      br
+      | of intelligent things.
+      .header-icon
+        | <svg version="1.1" viewBox="0 0 50 50" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect fill="none" height="50" width="50"/><polygon points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 "/></svg>
+  script var octo = document.querySelector('.logo svg'); document.querySelector('.logo-sm').appendChild(octo.cloneNode(true));
+
+mixin headerSm
+  header.small
+    .header-sm.fixed-header
+      nav
+        ul.nav-list
+          a(href='/')
+            .logo-sm
+              include ../mixins/octo.jade
+          li
+            a(href='/design/') Design
+          li
+            a(href='/atelier/') Atelier
+          li
+            a(href='/about/') About
+      
 mixin downCaret()
   | <svg version="1.1" viewBox="0 0 50 50" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect fill="none" height="50" width="50"/><polygon points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 "/></svg>

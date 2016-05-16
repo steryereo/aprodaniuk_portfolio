@@ -195,7 +195,8 @@ if (!window.requestAnimationFrame) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  headerInit();
+  var header = document.querySelector('.header-lg');
+  if (header) { headerInit(); }
   var gallery = document.querySelector('.gallery');
   if (gallery) { galleryInit(); }
   var infoHide = document.querySelector('.main-image .close-icon');

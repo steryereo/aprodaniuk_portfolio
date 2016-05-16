@@ -1,5 +1,10 @@
 extends ../layouts/default
 
+block header
+  include ../mixins/mixins
+
+  +headerLg()
+
 block content
 
   include ../mixins/mixins  
