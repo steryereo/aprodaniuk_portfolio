@@ -299,7 +299,10 @@ nav {
 .hide-scroll-outer {
   position: relative;
 }
- 
+
+.gallery-mobile {
+  display: none;
+}
 .gallery {
   padding: 1rem;
   overflow-y: scroll;
@@ -412,20 +415,28 @@ footer {
   }
 }
 
-.header-icon {
-  position: relative;
-  bottom: 12px;
+.caret-icon {
   width:30px;
   height: 30px;
-  animation:bounce 5s infinite;
-  margin: 0 auto;
   svg {
-    // transform: rotate(180deg);
     max-width: 100%;
     polygon {
       fill: $text-color;
     }
   }
+  &:hover svg polygon {
+    fill: $light-grey;
+  }
+}
+
+.nav-disclose {
+  display: none;
+}
+.header-icon {
+  position: relative;
+  bottom: 12px;
+  animation:bounce 5s infinite;
+  margin: 0 auto;
 }
 
 .about-bg {
@@ -442,7 +453,14 @@ footer {
   .content {
     width: 100%;
   }
+  nav {
+    padding: 24px 24px;
+  }
   nav li {
+
+  }
+  .logo-sm {
+    left: 24px;
 
   }
   .header-icon {
@@ -457,8 +475,31 @@ footer {
   }
 }
 @media (max-width: $small-breakpoint) {
-  nav li {
-    margin: 0 0.5rem;
+  main {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .nav-disclose {
+    display: block;
+    width: 30px;
+    float: right;
+    z-index: 20;
+  }
+  nav {
+    ul {
+      display: none;
+      background-color: rgba($white, 0.95);
+      position: absolute;
+      right: 0;
+      top: $nav-height;
+    }
+    li {
+      display: block;
+      margin: 16px 32px;
+    }
+    a {
+      width: auto;
+    }
   }
   .logo-title {
     font-size: 1rem;
@@ -466,11 +507,26 @@ footer {
   .header-lg {
     font-size: 1.5rem;
   }
+  .gallery {
+    display: none;
+  }
+  .gallery-mobile {
+    display: block;
+    width: 100%;
+  }
 }
+
 
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+  visibility: visible;
 }

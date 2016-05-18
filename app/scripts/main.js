@@ -33,6 +33,22 @@ var removeClass = function(el, className) {
   }
 };
 
+var toggleClass = function(el, className) {
+  if (el.classList) {
+    el.classList.toggle(className);
+  } else {
+    var classes = el.className.split(' ');
+    var existingIndex = classes.indexOf(className);
+
+    if (existingIndex >= 0) {
+      classes.splice(existingIndex, 1);
+    } else {
+      classes.push(className);
+    }
+    el.className = classes.join(' ');
+  }
+};
+
 var hideDescription = function(e) {
   var descriptionElem = e.currentTarget.parentElement;
   addClass(descriptionElem, 'fade-out');
@@ -201,6 +217,13 @@ document.addEventListener('DOMContentLoaded', function() {
   if (infoHide) { infoHide.addEventListener('click', hideDescription); }
   var infoShow = document.querySelector('.main-image .info-icon');
   if (infoShow) { infoShow.addEventListener('click', showDescription); }
+  var navDisclose = document.querySelector('.nav-disclose');
+  if (navDisclose) {    
+    navDisclose.addEventListener('click', function () {
+      toggleClass(document.querySelector('.nav-list'), 'show');
+    });
+  }
+
   setInterval(function() {
     changeColor(colors[colorIndex]);
     colorIndex = (colorIndex + 1) % colors.length;
