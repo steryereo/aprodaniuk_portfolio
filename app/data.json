@@ -28,13 +28,14 @@
     },
     {
       "title": "Heinke / Frishman",
+      "thumb": "/images/hp_hfwedding_387x290.png",
       "images": [
-        "/images/JD1.jpg",
-        "/images/JD2.jpg",
-        "/images/JD3.jpg",
-        "/images/JD4.jpg",
-        "/images/JD5.jpg",
-        "/images/JD6.jpg"
+        "/images/JD1.png",
+        "/images/JD2.png",
+        "/images/JD3.png",
+        "/images/JD4.png",
+        "/images/JD5.png",
+        "/images/JD6.png"
       ],
       "date": "Fall 2011",
       "description": "Letterpress Wedding Invitations, inspired by vintage seed packets, with a modern flare.",
@@ -106,9 +107,17 @@
     },
     {
       "title": "Resinance",
-      "images": ["/images/resin1.jpg"],
+      "thumb": "/images/hp_resonance_387x290.png",
+      "images": [
+        "/images/resonance_1.png",
+        "/images/resonance_2.png",
+        "/images/resonance_3.png",
+        "/images/resonance_4.png",
+        "/images/resonance_5.png"
+      ],
       "date": "Winter 2012",
-      "description": "Old wooden door reinvisioned as a dining room table."
+      "description": "Old wooden door reinvisioned as a dining room table.",
+      "url": "/atelier/resinance"
     }
   ]
 }

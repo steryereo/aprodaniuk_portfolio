@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var infoShow = document.querySelector('.main-image .info-icon');
   if (infoShow) { infoShow.addEventListener('click', showDescription); }
   var navDisclose = document.querySelector('.nav-disclose');
-  if (navDisclose) {    
+  if (navDisclose) {
     navDisclose.addEventListener('click', function () {
       toggleClass(document.querySelector('.nav-list'), 'show');
     });

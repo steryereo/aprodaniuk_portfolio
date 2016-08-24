@@ -1,4 +1,4 @@
-mixin gallery(data1, data2)  
+mixin gallery(data1, data2)
   div.hide-scroll-outer
     section.gallery
       ul.row
@@ -12,16 +12,19 @@ mixin gallery(data1, data2)
       div.gallery-right
         +downCaret()
 
-mixin mobileGallery(data)  
+mixin mobileGallery(data)
   section.gallery-mobile
-    ul
-      each item in data
-        +thumbnail(item)
-      
+    - var n = 0
+      while n < data.length
+        .row
+          +thumbnail(data[n])
+          +thumbnail(data[n+1])
+        - n += 2
+
 mixin thumbnail(item)
   a(href=item.url)
     .thumbnail
-      img(src=item.images[0])
+      img(src=item.thumb || item.images[0])
       div.overlay
         div.caption
           span.title= item.title
@@ -40,9 +43,13 @@ mixin project(item)
         .close-icon x
       .info-icon.fade-out i
     ul.images
-      - for(var i = 1; i < item.images.length; i++ )
-        li.project-image
-          img(src=item.images[i])
+      - for(var i = 1; i < item.images.length; i += 2)
+        .project-row.cf
+          li.project-image
+            img(src=item.images[i])
+          - if(item.images[i+1])
+            li.project-image
+              img(src=item.images[i+1])
 
 mixin headerLg
   header
@@ -76,16 +83,15 @@ mixin headerSm
     .header-sm.fixed-header
       nav
         ul.nav-list
-          li
-            a(href='/')
-              .logo-sm
-                include ../mixins/octo.jade
+          a(href='/')
+            .logo-sm
+              include ../mixins/octo.jade
           li
             a(href='/design/') Design
           li
             a(href='/atelier/') Atelier
           li
             a(href='/about/') About
-      
+
 mixin downCaret()
   | <svg version="1.1" viewBox="0 0 50 50" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect fill="none" height="50" width="50"/><polygon points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 "/></svg>
