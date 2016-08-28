@@ -3,9 +3,46 @@
     {
       "title": "AdsNative",
       "role": "branding + buildout",
-      "images": ["/images/adsnative1.png"],
+      "thumb": "/images/Design_AdsNativeWebsite/hp_anwebsite.png",
+      "images": [
+        "/images/Design_AdsNativeWebsite/anwebsite_h1.1.png",
+        "/images/Design_AdsNativeWebsite/anwebsite_h1.2.png",
+        "/images/Design_AdsNativeWebsite/anwebsite_h1.3.png",
+        "/images/Design_AdsNativeWebsite/anwebsite_h1.4.png"
+      ],
       "date": "",
-      "description": ""
+      "description": "",
+      "url": "design/adsnative"
+    },
+    {
+      "title": "AdsNative - Roads to Revenue",
+      "role": "",
+      "thumb": "/images/Design_roadstorevenue/hp_roadstorevenue.png",
+      "images": [
+        "/images/Design_roadstorevenue/roadstorevenue_h1.png",
+        "/images/Design_roadstorevenue/roadstorevenue_h2.png",
+        "/images/Design_roadstorevenue/roadstorevenue_h3.png",
+        "/images/Design_roadstorevenue/roadstorevenue_h4.png",
+        "/images/Design_roadstorevenue/roadstorevenue_h5.png"
+      ],
+      "date": "",
+      "description": "",
+      "url": "design/roadstorevenue"
+    },
+
+    {
+      "title": "Chronicle Wine Competition",
+      "role": "",
+      "thumb": "/images//images/Design_chronwinecompetition/hp_chronwinecompetition_387x290.png",
+      "images": [
+        "/images/Design_chronwinecompetition/chronwinecompetition_h1.png",
+        "/images/Design_chronwinecompetition/chronwinecompetition_h2.png",
+        "/images/Design_chronwinecompetition/chronwinecompetition_h3.png",
+        "/images/Design_chronwinecompetition/chronwinecompetition_h4.png"
+      ],
+      "date": "",
+      "description": "",
+      "url": "design/chronwine"
     },
     {
       "title": "Chicken Surf Farm",
@@ -28,18 +65,44 @@
     },
     {
       "title": "Heinke / Frishman",
-      "thumb": "/images/hp_hfwedding_387x290.png",
+      "thumb": "/images/Design_hfwedding/hp_hfwedding_387x290.png",
       "images": [
-        "/images/JD1.png",
-        "/images/JD2.png",
-        "/images/JD3.png",
-        "/images/JD4.png",
-        "/images/JD5.png",
-        "/images/JD6.png"
+        "/images/Design_hfwedding/hfwedding_h1.png",
+        "/images/Design_hfwedding/hfwedding_2.png",
+        "/images/Design_hfwedding/hfwedding_3.png",
+        "/images/Design_hfwedding/hfwedding_4.png",
+        "/images/Design_hfwedding/hfwedding_5.png",
+        "/images/Design_hfwedding/hfwedding_6.png"
       ],
       "date": "Fall 2011",
       "description": "Letterpress Wedding Invitations, inspired by vintage seed packets, with a modern flare.",
       "url": "/design/wedding"
+    },
+    {
+      "title": "Lending Club",
+      "thumb": "/images/Design_lendingclub/hp_lendingclub.png",
+      "images": [
+        "/images/Design_lendingclub/lendingclub_h1.png",
+        "/images/Design_lendingclub/lendingclub_h2.png",
+        "/images/Design_lendingclub/lendingclub_h3.png"
+      ],
+      "date": "",
+      "description": "",
+      "url": "/design/lendingclub"
+    },
+    {
+      "title": "Love Local",
+      "thumb": "/images/Design_lovelocal/hp_lovelocal.png",
+      "images": [
+        "/images/Design_lovelocal/loveloacl_h1.png",
+        "/images/Design_lovelocal/loveloacl_h2.png",
+        "/images/Design_lovelocal/loveloacl_h3.png",
+        "/images/Design_lovelocal/loveloacl_h4.png",
+        "/images/Design_lovelocal/loveloacl_h5.png"
+      ],
+      "date": "",
+      "description": "",
+      "url": "/design/lovelocal"
     },
     {
       "title": "Shawnimals",
@@ -107,13 +170,13 @@
     },
     {
       "title": "Resinance",
-      "thumb": "/images/hp_resonance_387x290.png",
+      "thumb": "/images/Atelier_resonance/hp_resonance_387x290.png",
       "images": [
-        "/images/resonance_1.png",
-        "/images/resonance_2.png",
-        "/images/resonance_3.png",
-        "/images/resonance_4.png",
-        "/images/resonance_5.png"
+        "/images/Atelier_resonance/resonance_h1.png",
+        "/images/Atelier_resonance/resonance_2.png",
+        "/images/Atelier_resonance/resonance_3.png",
+        "/images/Atelier_resonance/resonance_4.png",
+        "/images/Atelier_resonance/resonance_5.png"
       ],
       "date": "Winter 2012",
       "description": "Old wooden door reinvisioned as a dining room table.",

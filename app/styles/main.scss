@@ -530,17 +530,8 @@ footer {
     width: 100%;
   }
   .thumbnail {
-    float: left;
-    width: 60%;
-    height: 150px;
+    width: 100%;
     margin: 5px 0;
-  }
-  .row a:first-child .thumbnail {
-    margin-right: 2%
-  },
-  .row:nth-child(2n) a:first-child .thumbnail,
-  .row:nth-child(2n+1) a:last-child .thumbnail {
-    width: 38%;
   }
 }
 

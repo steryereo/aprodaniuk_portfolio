@@ -1,0 +1,19 @@
+extends ../../layouts/default
+
+block header
+  include ../../mixins/mixins
+
+  +headerSm()
+
+
+block content
+
+  include ../../mixins/mixins
+  -
+    var item;
+    for (var i = 0; i < portfolioData.design.length; i++) {
+      if (portfolioData.design[i].title === "AdsNative - Roads to Revenue") {
+        item = portfolioData.design[i];
+      }
+    }
+  +project(item)
